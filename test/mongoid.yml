@@ -1,0 +1,6 @@
+test:
+  sessions:
+    default:
+      database: mongoid_auto_increment_test
+      hosts:
+        - localhost:27017
