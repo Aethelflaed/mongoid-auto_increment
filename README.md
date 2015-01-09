@@ -41,6 +41,9 @@ Changes from mongoid-sequence:
 This permets to `auto_increment!` a new record before persisting it.
 * Removed the auto_increment on `id` as it was buggy on Mongoid 4
 * Fixed use of `dup` to reset the auto incremented fields.
+* Removed prefix, which is not consistent for multiple sequence in same class and quite useless to me. (You need it? I can add it back !)
+* Inherit auto_increments from parents automatically
+* Added some personalization of the collection name and class prefix
 
 ## License
 
