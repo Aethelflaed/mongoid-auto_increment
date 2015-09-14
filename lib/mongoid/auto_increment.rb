@@ -44,11 +44,11 @@ module Mongoid
     end
 
     def auto_increment!
-      session = self.class.mongo_session
+      client = self.class.mongo_client
       self.class.auto_increment_classes.each do |klass|
         klass.auto_incremented_fields.each do |name|
           if !self[name]
-            result = session.command({
+            result = client.command({
               findAndModify: self.class.auto_increment_collection,
               query: {_id: "#{klass.auto_increment_class_prefix}_#{name}"},
               update: { '$inc' => { klass.auto_increment_value_field => 1 } },
