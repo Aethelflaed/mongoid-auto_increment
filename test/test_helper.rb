@@ -18,7 +18,7 @@ ActiveSupport::TestCase.test_order = :random
 
 class BaseTest < ActiveSupport::TestCase
   def teardown
-    Mongoid::Sessions.default.use('mongoid_auto_increment_test').drop
+    Mongoid.default_client.use('mongoid_auto_increment_test').database.drop
   end
 end
 

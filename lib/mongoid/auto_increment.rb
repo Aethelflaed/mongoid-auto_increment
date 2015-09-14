@@ -55,7 +55,7 @@ module Mongoid
               upsert: true,
               new: true,
             })
-            self[name] = result['value'][klass.auto_increment_value_field]
+            self[name] = result.first['value'][klass.auto_increment_value_field]
           end
         end
       end
