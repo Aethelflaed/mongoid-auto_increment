@@ -36,7 +36,7 @@ so I had to upload it to rubygems.
 
 Changes from mongoid-sequence:
 
-* Support for Mongoid 4
+* Support for Mongoid 6
 * Calling `auto_increment!` creation callback only if the auto incremented field has not already been generated.
 This permets to `auto_increment!` a new record before persisting it.
 * Removed the auto_increment on `id` as it was buggy on Mongoid 4
