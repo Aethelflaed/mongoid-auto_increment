@@ -14,7 +14,9 @@ require File.expand_path("../../lib/mongoid-auto_increment", __FILE__)
 
 Mongoid.load!("#{File.dirname(__FILE__)}/mongoid.yml", "test")
 
-Dir["#{File.dirname(__FILE__)}/models/*.rb"].each { |f| require f }
+require_relative 'models/first_auto_incremented_model'
+require_relative 'models/second_auto_incremented_model'
+require_relative 'models/subclass_model'
 
 ActiveSupport::TestCase.test_order = :random
 
