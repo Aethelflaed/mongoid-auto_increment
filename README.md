@@ -25,7 +25,7 @@ class User
 
   field :name
 
-  auto_increment :count
+  auto_incremented :count
 end
 ```
 
@@ -39,7 +39,7 @@ Changes from mongoid-sequence:
 * Support for Mongoid 6
 * Calling `auto_increment!` creation callback only if the auto incremented field has not already been generated.
 This permets to `auto_increment!` a new record before persisting it.
-* Removed the auto_increment on `id` as it was buggy on Mongoid 4
+* Removed the auto increment on `id` as it was buggy on Mongoid 4
 * Fixed use of `dup` to reset the auto incremented fields.
 * Removed prefix, which is not consistent for multiple sequence in same class and quite useless to me. (You need it? I can add it back !)
 * Inherit auto_increments from parents automatically
