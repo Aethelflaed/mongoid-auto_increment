@@ -1,7 +1,9 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 gemspec
 
-gem 'simplecov', :require => false
-gem 'pry-nav', '~> 0.2.4'
+mongoid_version = ENV["MONGOID_VERSION"] || "7.0.0"
 
+gem "mongoid", "~> #{mongoid_version}"
+gem "simplecov", require: false
+gem "pry-nav", "~> 0.2.4"
