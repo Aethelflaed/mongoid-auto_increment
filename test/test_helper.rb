@@ -26,3 +26,4 @@ class BaseTest < ActiveSupport::TestCase
   end
 end
 
+puts "Testing against mongoid: #{Mongoid::VERSION}"

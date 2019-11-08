@@ -1,0 +1,16 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.4.9
+  - 2.5.7
+  - 2.6.5
+before_install:
+  - gem install bundler
+install: bundle update --jobs=3 --retry=3
+services:
+  - mongodb
+env:
+  - "MONGOID_VERSION=6.2.0"
+  - "MONGOID_VERSION=6.3.0"
+  - "MONGOID_VERSION=6.4.0"
+  - "MONGOID_VERSION=7.0.0"
