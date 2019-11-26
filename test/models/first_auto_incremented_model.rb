@@ -4,4 +4,3 @@ class FirstAutoIncrementedModel
 
   auto_incremented :identifier
 end
-
