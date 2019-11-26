@@ -1,3 +1,6 @@
+## 2.4.0
+* Support for Mongoid 7.0
+
 ## 2.3.0
 * Support for Mongoid 6.2
 * Support for ActiveSupport 5.1
