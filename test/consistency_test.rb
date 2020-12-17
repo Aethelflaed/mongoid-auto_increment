@@ -1,7 +1,7 @@
-require 'test_helper'
+require "test_helper"
 
 class ConsistencyTest < BaseTest
-  test 'single auto increment consistency' do
+  test "single auto increment consistency" do
     n = 200
 
     n.times do
@@ -11,7 +11,7 @@ class ConsistencyTest < BaseTest
     assert_equal (1..n).to_a, FirstAutoIncrementedModel.only(:identifier).map(&:identifier).sort
   end
 
-  test 'pre incrementing should not be overriden' do
+  test "pre incrementing should not be overriden" do
     n = 200
 
     n.times do
@@ -23,7 +23,7 @@ class ConsistencyTest < BaseTest
     assert_equal (1..n).to_a, FirstAutoIncrementedModel.only(:identifier).map(&:identifier).sort
   end
 
-  test 'dup should create new identifier' do
+  test "dup should create new identifier" do
     n = 100
 
     n.times do
@@ -34,7 +34,7 @@ class ConsistencyTest < BaseTest
     assert_equal (1..(n * 2)).to_a, FirstAutoIncrementedModel.only(:identifier).map(&:identifier).sort
   end
 
-  test 'double auto increment consistency' do
+  test "double auto increment consistency" do
     n = 100
 
     n.times do
@@ -46,4 +46,3 @@ class ConsistencyTest < BaseTest
     assert_equal (1..n).to_a, SecondAutoIncrementedModel.only(:identifier).map(&:identifier).sort
   end
 end
-

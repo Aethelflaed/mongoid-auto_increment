@@ -1,7 +1,7 @@
-require 'test_helper'
+require "test_helper"
 
 class UniquenessTest < BaseTest
-  test 'single auto increment uniqueness' do
+  test "single auto increment uniqueness" do
     n = 200
 
     n.times do
@@ -11,7 +11,7 @@ class UniquenessTest < BaseTest
     assert_equal n, FirstAutoIncrementedModel.all.uniq.size
   end
 
-  test 'double auto increment uniqueness' do
+  test "double auto increment uniqueness" do
     n = 100
 
     n.times do
@@ -23,4 +23,3 @@ class UniquenessTest < BaseTest
     assert_equal n, SecondAutoIncrementedModel.all.uniq.size
   end
 end
-
