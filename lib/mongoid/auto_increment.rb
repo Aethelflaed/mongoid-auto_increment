@@ -1,4 +1,4 @@
-require 'active_support/concern'
+require "active_support/concern"
 
 module Mongoid
   module AutoIncrement
@@ -12,33 +12,33 @@ module Mongoid
       class_attribute :auto_increment_collection
       class_attribute :auto_increment_class_prefix
 
-      self.auto_increment_value_field   = 'value'
-      self.auto_increment_class         = self
-      self.auto_incremented_fields      = []
-      self.auto_increment_classes       = []
-      self.auto_increment_collection    = '__auto_increments'
-      self.auto_increment_class_prefix  = self.collection_name
+      self.auto_increment_value_field = "value"
+      self.auto_increment_class = self
+      self.auto_incremented_fields = []
+      self.auto_increment_classes = []
+      self.auto_increment_collection = "__auto_increments"
+      self.auto_increment_class_prefix = collection_name
 
       set_callback :create, :before, :auto_increment!, unless: :persisted?
 
-      self.ancestors.each do |klass|
+      ancestors.each do |klass|
         if klass.respond_to?(:auto_incremented_fields)
-          self.auto_increment_classes << klass
+          auto_increment_classes << klass
         end
       end
     end
 
     module ClassMethods
       def auto_incremented(name, opts = {})
-        if self.auto_increment_class != self
-          self.auto_increment_classes = self.auto_increment_classes + [self]
-          self.auto_incremented_fields = self.auto_incremented_fields.dup
-          if self.auto_increment_class.auto_increment_class_prefix == self.auto_increment_class_prefix
-            self.auto_increment_class_prefix = self.collection_name
+        if auto_increment_class != self
+          self.auto_increment_classes = auto_increment_classes + [self]
+          self.auto_incremented_fields = auto_incremented_fields.dup
+          if auto_increment_class.auto_increment_class_prefix == auto_increment_class_prefix
+            self.auto_increment_class_prefix = collection_name
           end
           self.auto_increment_class = self
         end
-        self.auto_incremented_fields << name
+        auto_incremented_fields << name
         field name, opts.merge({type: Integer})
       end
     end
@@ -47,15 +47,15 @@ module Mongoid
       client = self.class.mongo_client
       self.class.auto_increment_classes.each do |klass|
         klass.auto_incremented_fields.each do |name|
-          if !self[name]
+          unless self[name]
             result = client.command({
               findAndModify: self.class.auto_increment_collection,
               query: {_id: "#{klass.auto_increment_class_prefix}_#{name}"},
-              update: { '$inc' => { klass.auto_increment_value_field => 1 } },
+              update: {"$inc" => {klass.auto_increment_value_field => 1}},
               upsert: true,
               new: true,
             })
-            self[name] = result.first['value'][klass.auto_increment_value_field]
+            self[name] = result.first["value"][klass.auto_increment_value_field]
           end
         end
       end
@@ -72,4 +72,3 @@ module Mongoid
     end
   end
 end
-

@@ -1,2 +1,1 @@
-require 'mongoid/auto_increment'
-
+require "mongoid/auto_increment"
