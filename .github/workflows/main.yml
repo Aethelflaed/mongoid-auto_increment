@@ -1,0 +1,47 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# GitHub recommends pinning actions to a commit SHA.
+# To get a newer version, you will need to update the SHA.
+# You can also reference a tag or branch, but the action may change without warning.
+
+name: Ruby CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo
+        ports:
+        - 27017:27017
+
+    strategy:
+      matrix:
+        ruby-version: ['2.6', '2.7']
+        mongoid-version: ['6.2.0', '6.3.0', '6.4.0', '7.0.0', '7.1.0']
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby ${{ matrix.ruby-version }}
+        uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - name: Setup Mongoid ENV var
+        run: export MONGOID_VERSION=${{ matrix.mongoid-version }}
+      - name: Echo MONGOID version
+        run: echo $MONGOID_VERSION
+      - name: Install dependencies
+        run: bundle update --jobs=3 --retry=3
+      - name: Run tests
+        run: bundle exec rake
