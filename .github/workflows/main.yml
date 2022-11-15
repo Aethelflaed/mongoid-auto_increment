@@ -29,7 +29,7 @@ jobs:
     strategy:
       matrix:
         ruby-version: ['2.6', '2.7']
-        mongoid-version: ['6.2.0', '6.3.0', '6.4.0', '7.0.0', '7.1.0']
+        mongoid-version: ['6.2.0', '6.3.0', '6.4.0', '7.0.0', '7.1.0', '8.0.0']
 
     steps:
       - uses: actions/checkout@v3
@@ -39,8 +39,6 @@ jobs:
           ruby-version: ${{ matrix.ruby-version }}
       - name: Setup Mongoid ENV var
         run: export MONGOID_VERSION=${{ matrix.mongoid-version }}
-      - name: Echo MONGOID version
-        run: echo $MONGOID_VERSION
       - name: Install dependencies
         run: bundle update --jobs=3 --retry=3
       - name: Run tests

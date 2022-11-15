@@ -8,13 +8,13 @@ Gem::Specification.new do |s|
   s.version = Mongoid::AutoIncrement::VERSION
   s.authors = ["Geoffroy Planquart"]
   s.email = ["geoffroy@planquart.fr"]
-  s.homepage = "https://github.com/Aethelflaed/mongoid-auto_increment"
+  s.homepage = "https://github.com/CreaLettres/mongoid-auto_increment"
   s.summary = "Auto-incremented field for Mongoid"
   s.description = "Let you define an auto-incremented field in Mongoid, which will behave like SQL id field."
 
   s.files = Dir["{lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "mongoid", ">= 5.0.0", "< 7.2.0"
-  s.add_dependency "activesupport", ">= 4.2.0", "< 6.1.0"
+  s.add_dependency "mongoid", ">= 5.0.0", "<= 8.0"
+  s.add_dependency "activesupport", ">= 4.2.0", "<= 7.1"
 end
