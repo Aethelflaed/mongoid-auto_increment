@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.license = "MIT"
   s.name = "mongoid-auto_increment"
   s.version = Mongoid::AutoIncrement::VERSION
-  s.authors = ["Geoffroy Planquart"]
-  s.email = ["geoffroy@planquart.fr"]
+  s.authors = ["Geoffroy Planquart", "Thomas Kuntz"]
+  s.email = ["thomaskuntz67@gmail.com", "geoffroy@planquart.fr"]
   s.homepage = "https://github.com/CreaLettres/mongoid-auto_increment"
   s.summary = "Auto-incremented field for Mongoid"
   s.description = "Let you define an auto-incremented field in Mongoid, which will behave like SQL id field."
