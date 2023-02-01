@@ -17,5 +17,5 @@ Gem::Specification.new do |s|
   s.test_files  = Dir['test/**/*']
 
   s.add_dependency 'mongoid',       '>= 5.0.0', '< 7.1.0'
-  s.add_dependency 'activesupport', '>= 4.2.0', '< 5.2.0'
+  s.add_dependency 'activesupport', '>= 4.2.0', '< 7.1.0'
 end
